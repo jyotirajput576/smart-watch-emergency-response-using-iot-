@@ -1,0 +1,282 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme-aware body */
+body {
+  @apply bg-white text-black;
+}
+.dark body {
+  @apply bg-gradient-to-br from-gray-900 to-black text-white;
+}
+
+/* BACKGROUNDS */
+.bg-dashboard {
+  background: linear-gradient(135deg, #020617, #020617, #020617);
+}
+
+.bg-health {
+  background: linear-gradient(135deg, #022c22, #064e3b);
+}
+
+.bg-emergency {
+  background: linear-gradient(135deg, #450a0a, #7f1d1d);
+}
+
+.bg-settings {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.glass {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1.5rem;
+}
+
+.glow {
+  box-shadow: 0 0 30px rgba(34,211,238,0.4);
+}
+
+/* BEAUTIFUL BACKGROUND ANIMATIONS */
+
+/* Floating Particles */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(20px) rotate(-180deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Animated Background Container */
+.animated-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg,
+    rgba(6, 182, 212, 0.1),
+    rgba(14, 165, 233, 0.1),
+    rgba(139, 92, 246, 0.1),
+    rgba(6, 182, 212, 0.1)
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+  z-index: -1;
+}
+
+/* Floating Geometric Shapes */
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.shape {
+  position: absolute;
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape:nth-child(2) { animation-delay: -2s; }
+.shape:nth-child(3) { animation-delay: -4s; }
+.shape:nth-child(4) { animation-delay: -1s; }
+.shape:nth-child(5) { animation-delay: -3s; }
+.shape:nth-child(6) { animation-delay: -5s; }
+
+.shape.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #06b6d4, #0ea5e9);
+  top: 10%;
+  left: 10%;
+  animation: float 8s ease-in-out infinite, pulse-glow 4s ease-in-out infinite;
+}
+
+.shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid #8b5cf6;
+  top: 20%;
+  right: 15%;
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.shape.square {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #10b981, #059669);
+  top: 60%;
+  left: 20%;
+  animation: bounce-gentle 5s ease-in-out infinite;
+  transform: rotate(45deg);
+}
+
+.shape.hexagon {
+  width: 50px;
+  height: 43px;
+  background: #f59e0b;
+  position: relative;
+  top: 40%;
+  right: 10%;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+  animation: rotate-slow 10s linear infinite;
+}
+
+.shape.diamond {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  top: 70%;
+  left: 70%;
+  transform: rotate(45deg);
+  animation: float 9s ease-in-out infinite, pulse-glow 3s ease-in-out infinite;
+}
+
+/* Animated Particles */
+.particle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: rgba(6, 182, 212, 0.8);
+  border-radius: 50%;
+  animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Page-specific background enhancements */
+.bg-dashboard.animated-bg::before {
+  background: linear-gradient(45deg,
+    rgba(6, 182, 212, 0.08),
+    rgba(14, 165, 233, 0.08),
+    rgba(6, 182, 212, 0.08)
+  );
+}
+
+.bg-health.animated-bg::before {
+  background: linear-gradient(45deg,
+    rgba(16, 185, 129, 0.08),
+    rgba(5, 150, 105, 0.08),
+    rgba(16, 185, 129, 0.08)
+  );
+}
+
+.bg-emergency.animated-bg::before {
+  background: linear-gradient(45deg,
+    rgba(239, 68, 68, 0.08),
+    rgba(220, 38, 38, 0.08),
+    rgba(239, 68, 68, 0.08)
+  );
+}
+
+.bg-settings.animated-bg::before {
+  background: linear-gradient(45deg,
+    rgba(139, 92, 246, 0.08),
+    rgba(124, 58, 237, 0.08),
+    rgba(139, 92, 246, 0.08)
+  );
+}
+
+/* Emergency blink animation */
+@keyframes emergency-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.9; }
+}
+
+.emergency-blink {
+  animation: emergency-blink 2s ease-in-out infinite;
+}
+
+/* Loading Screen Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50px); }
+}
+
+@keyframes wave-reverse {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50px); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave 4s ease-in-out infinite;
+}
+
+.animate-wave-reverse {
+  animation: wave-reverse 5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% { background-color: rgba(239,68,68,0.2); }
+  50% { background-color: rgba(239,68,68,0.5); }
+  100% { background-color: rgba(239,68,68,0.2); }
+}
+
+.emergency-blink {
+  animation: blink 1.2s infinite;
+}
